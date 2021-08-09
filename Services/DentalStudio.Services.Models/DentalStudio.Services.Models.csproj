@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\DentalStudio.Data.Models\DentalStudio.Data.Models.csproj" />
+    <ProjectReference Include="..\DentalStudio.Services.Mapping\DentalStudio.Services.Mapping.csproj" />
+  </ItemGroup>
+
+</Project>

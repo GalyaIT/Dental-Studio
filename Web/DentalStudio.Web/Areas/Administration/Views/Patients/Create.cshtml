@@ -1,0 +1,75 @@
+﻿@using DentalStudio.Web.ViewModels.Administration.Accounts
+@using DentalStudio.Web.Infrastructure
+@model RegisterViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container" style="margin-top: 1% ">
+    <h2 class="text-center text-info"> Добави пациент</h2>
+    <div class="row">
+        <div class="col-sm-2"> </div>
+        <div class="col-md-8">
+            <div class="tab-content">
+                <form asp-area="Administration" asp-controller="Patients" asp-action="Create" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="UserName"></label>
+                            <input type="text" class="form-control" id="UserName" placeholder="UserName..." asp-for="UserName">
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="FirstName"></label>
+                            <input type="text" class="form-control" id="firstName" placeholder="First Name..." asp-for="FirstName">
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="LastName"></label>
+                            <input type="text" class="form-control" id="lastName" placeholder="Last Name..." asp-for="LastName">
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Email"></label>
+                            <input type="email" class="form-control" id="email" placeholder="Email..." asp-for="Email">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Password"></label>
+                            <input type="password" class="form-control" id="password"
+                                   placeholder="Password..." asp-for="Password">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ConfirmPassword"></label>
+                            <input type="password" class="form-control" id="confirmPassword"
+                                   placeholder="Confirm Password..." asp-for="ConfirmPassword">
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <a asp-action="All" asp-controller="Patients" class="btn btn-default active">Откажи</a>
+                        <button type="submit" class="btn btn-primary float-lg-right">Добави</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+

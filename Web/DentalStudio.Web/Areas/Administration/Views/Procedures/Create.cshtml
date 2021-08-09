@@ -1,0 +1,54 @@
+﻿@using DentalStudio.Web.ViewModels.Administration.Procedures
+@using DentalStudio.Data.Models.Enumerations
+@model ProcedureCreateInputModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container" style="margin-top: 1% ">
+    <h2 class="text-center text-info"> Добави процедура</h2>
+    <div class="row">
+        <div class="col-sm-3"> </div>
+        <div class="col-md-8">
+            <div class="tab-content">
+                <form asp-area="Administration" asp-controller="Procedures" asp-action="Create" method="post">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label asp-for="Name"></label>
+                            <input type="text" class="form-control" id="name" placeholder="Name..." asp-for="Name">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label asp-for="Code"></label>
+                            <select asp-for="Code" asp-items="Html.GetEnumSelectList<Code>()" class="form-control">
+                                <option selected="selected" value="">Please select</option>
+                            </select>
+                            <span asp-validation-for="Code" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label asp-for="Price"></label>
+                            <input type="number" class="form-control" id="price" placeholder="Price..." asp-for="Price">
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <a asp-action="All" asp-controller="Procedures" class="btn btn-default active">Откажи</a>
+                        <button type="submit" class="btn btn-primary">Добави</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+

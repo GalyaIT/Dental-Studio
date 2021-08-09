@@ -1,0 +1,88 @@
+﻿@using DentalStudio.Web.ViewModels.Medicine.Patients
+@model List<PatientDoctorViewModel>
+@{
+    ViewData["Title"] = "All";
+}
+
+<!-- DATA TABLE-->
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th><h4>Patients</h4></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="btn btn-info mb-3" style="width:auto"
+                               asp-action="Index" asp-controller="Dashboard"> Back</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="dataTable" class="table table-data2 table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Gender</th>
+                            <th>Date of Birth</th>
+                            <th>Age</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (var i = 0; i < Model.Count; i++)
+                        {
+                            var patient = Model[i];
+                            <tr class="tr-shadow">
+                                <td>@patient.FullName</td>
+                                <td>@patient.Email</td>
+                                <td>@patient.PhoneNumber</td>
+                                <td>@patient.Address</td>
+                                <td>@patient.Gender</td>
+                                <td>@patient.DateOfBirth</td>
+                                <td>@patient.Age</td>
+                                <td>
+                                    <form>
+                                        <a class="btn btn-outline-info btn-sm"
+                                           asp-action="Details" asp-controller="Patients"
+                                           asp-route-id="@patient.Id">More</a>
+                                        <a class="btn btn-outline-info btn-sm"
+                                           asp-action="Appointments" asp-controller="Patients"
+                                           asp-route-id="@patient.Id">Appointments</a>
+                                        <a class="btn btn-outline-info btn-sm"
+                                           asp-action="Treatments" asp-controller="Patients"
+                                           asp-route-id="@patient.Id">Treatments</a>
+                                    </form>
+                                </td>
+                            </tr>
+                            }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END DATA TABLE-->
+
+
+@section Scripts
+{  
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+        });
+    </script>
+}
+

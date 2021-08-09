@@ -1,0 +1,108 @@
+﻿@using DentalStudio.Web.ViewModels.Medicine.Patients
+@using DentalStudio.Data.Models.Enumerations
+@model PatientDoctorViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="containerForm" style="margin-top: 5%">
+    <div class="row">
+        @*<div class="col-sm-2"> </div>*@
+        <div class="col-md-6">
+            <div>
+                <img src="@Model.Photo" alt="" style="width:400px; height:300px;">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card-header">
+                <h5>@Model.FullName</h5>
+            </div>
+            <div class="card-header">
+                Email: @Model.Email
+            </div>
+            <div class="card-header">
+                Phone Number: @Model.PhoneNumber
+            </div>
+            <div class="card-header">
+                Address: @Model.Address
+            </div>
+            <div class="card-header">
+                Dateof Birth: @Model.DateOfBirth
+            </div>
+            <div class="card-header">
+                Age: @Model.Age
+            </div>
+            <div class="card-header">
+                Gender: @Model.Gender
+            </div>
+            <div class="card-header">
+                Blood group: @Model.BloodGroup
+            </div>
+            <div class="card-header">
+                Is alergic: @Model.IsAlergic
+            </div>
+            <div class="card-header">
+                Is insured: @Model.IsInsured
+            </div>
+            <div class="card-header">
+                <a class="btn btn-info mb-3" style="width:auto"
+                   asp-action="All" asp-controller="Patients"> Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- DATA TABLE-->
+<div class="container">
+    <h4>Appointments</h4>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="table-responsive">
+                <table id="dataTable" class="table table-data2 table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Procedure</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var appointment in Model.Appointments)
+                        {
+                            <tr class="tr-shadow">
+                                <td>@appointment.Date</td>
+                                <td>@appointment.Time</td>
+                                <td>@appointment.ProcedureName</td>
+                                <td>@appointment.Status</td>
+                                @if (appointment.Status == Status.Waiting.ToString())
+                                {
+                                    <td>
+                                        <a class="btn btn-outline-success btn-sm float-lg-right"
+                                           asp-action="Edit" asp-controller="Appointments"
+                                           asp-route-id="@appointment.Id">Confirm</a>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td> </td>
+                                }
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END DATA TABLE-->
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+        });
+    </script>
+}

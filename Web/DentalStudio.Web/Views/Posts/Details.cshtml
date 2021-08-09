@@ -1,0 +1,39 @@
+﻿@using DentalStudio.Web.ViewModels.Posts
+@model PostDetailsViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+@if (this.TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-success">
+        @this.TempData["InfoMessage"]
+    </div>
+}
+<section>
+    <div class="container">
+
+        <div class="blog-item">
+            <div class="row">
+                <div class="col-lg-6 blog-thumb">
+                    <img src=@Model.ImageUrl alt="">
+                </div>
+                <div class="col-lg-6 blog-content">
+                    <div class="date"> <i class="far fa-calendar-alt"></i> @Model.CreatedOn</div>
+                    <h3>@Model.Title</h3>
+                    <div class="blog-metas">
+                        <div class="blog-meta">By @Model.UserUserName</div>
+                        <div class="blog-meta">Tags:<a href="">dentist</a>,<a href="">white,</a><a href="">theeth</a></div>
+                    </div>
+                    @Html.Raw(Model.SanitizedContent)
+                </div>
+            </div>
+            <div>
+                <a class="btn btn-info mb-3 float-lg-right" style="width:auto"
+                   asp-action="All" asp-controller="Posts"> Back</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+

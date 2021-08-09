@@ -1,0 +1,63 @@
+﻿@using DentalStudio.Web.ViewModels.Medicine.Doctors
+@model DoctorProfileDetailsViewModel
+@{
+    ViewData["Title"] = "Your Doctor Profile";
+}
+
+@if (this.TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-success">
+        @this.TempData["InfoMessage"]
+    </div>
+}
+<div class="containerForm" style="margin-top: 2% ">
+    <div class="row">
+        @*<div class="col-sm-2"> </div>*@
+        <div class="col-md-6">
+            <div>
+                <img src="@Model.Photo" alt="" style="width:400px; height:300px;">
+            </div>
+            <div class="col-md-10" style="margin-top: 15%">
+                <div class="text-center" style="color:cornflowerblue">
+                    Manage your account
+                </div>
+            </div>
+            <partial name="_ManageProfilePartial" />
+        </div>
+        <div class="col-md-6">
+            <div class="text-center" style="color:cornflowerblue">
+                @ViewData["Title"]
+            </div>
+            <div class="card-header" style="margin-top: 5%">
+                D-r: @Model.FullName
+            </div>
+            <div class="card-header" style="margin-top: 2%">
+                Speciality: @Model.Specialty
+            </div>
+            <div class="card-header" style="margin-top: 2%">
+                Email: @Model.Email
+            </div>
+            <div class="card-header" style="margin-top: 2%">
+                Phone Number: @Model.PhoneNumber
+            </div>
+            <div class="card-header" style="margin-top: 2%">
+                Address: @Model.Address
+            </div>
+            <div class="card-header" style="margin-top: 2%">
+                Dateof Birth: @Model.DateOfBirth
+            </div>
+            <div class="card-header" style="margin-top: 2%">
+                Gender: @Model.Gender
+            </div>
+            <div class="card-body" style="margin-top: 2%">
+                Grade:  @Html.Raw(Model.SanitizedGrade)
+            </div>
+            <div class="card-header">
+                <a class="btn btn-info mb-3" style="width:auto"
+                   asp-action="Index" asp-controller="Dashboard"> Back</a>
+                <a class="btn btn-info mb-3" style="width:auto"
+                   asp-area="Medicine" asp-action="EditProfile" asp-controller="Doctors" asp-route-id="@Model.Id"> Edit</a>
+            </div>
+        </div>
+    </div>
+</div>

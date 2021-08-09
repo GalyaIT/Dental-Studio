@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+
+<!-- Page info section -->
+@*<section class="page-info-section"style="margin-bottom:5%">
+        <div class="container">
+            <h2>About us</h2>
+            <img src="~/img/page-info-bg/1.jpg" alt="" style="width:103%; height:100px;">
+        </div>
+    </section>*@
+<!-- Page info section end -->
+<!-- Intro section -->
+<section  style="margin-top:2%">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="~/img/intro.jpg" alt="" style="width:550px; height:300px;">
+            </div>
+            <div class="col-lg-6 intro-text">
+                <h2>We Care About Your teeth</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper venenatis turpis eget suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec eu nulla sollicitudin, vestibulum sapien nec, dictum dolor. Morbi non penatibus et magnis  volutpat magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper venenatis turpis eget suscipit. Orci varius natoque penatibus et magnis.</p>
+                <a href="" class="site-btn">Read More</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Intro section end -->
+<!-- Featured section -->
+<section style="margin-top:3%">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="feature-item">
+                    <div >
+                        <h4>Affordable Care</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper venenatis turpis eget suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec eu nulla sollicitudin, vestibulum.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div >
+                        <h4>Amazing Team</h4>
+                        <p>Ipsum dolor sit amet, consectetur adipiscing elit. Duis semper venenatis turpis eget suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec eu nulla sollicitudin, vestibulum.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div >
+                        <h4>The best equipment</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper venenatis turpis eget suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec eu nulla sollicitudin, vestibulum.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="~/img/featured-bg.jpg" alt="" style="width:540px; height:500px;">
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<!-- Featured section end -->
+<!-- Doctors section -->
+<section style="margin-top:3%">
+    <div class="container">
+        <div class="section-title text-center">
+            <h2>The Doctors</h2>
+        </div>
+        @await Component.InvokeAsync("Doctors")
+        <div class="row"style="margin-top:2%">
+        @*<div class="col-lg-4">
+            <div class="doctor-item di-bg">
+                <div class="col-lg-6">
+                    <img src="~/img/doctors/1.jpg" alt="" style="width:100px; height:100px;">
+                </div>
+                <h4>Dr James Scott</h4>
+                <p>Head of the team</p>
+            </div>
+        </div>*@
+        @*<div class="col-lg-2 col-md-3  col-sm-6">
+            <div class="doctor-item">
+                <img src="~/img/doctors/1.jpg" alt="" style="width:100px; height:100px;">
+                <h6>Dr Tailor Smith</h6>
+                <p>Ortodontist</p>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-3  col-sm-6">
+            <div class="doctor-item">
+                <img src="~/img/doctors/2.jpg" alt="" style="width:100px; height:100px;">
+                <h6>Dr Jane Williams</h6>
+                <p>Ortodontist</p>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-3  col-sm-6">
+            <div class="doctor-item">
+                <img src="~/img/doctors/3.jpg" alt="" style="width:100px; height:100px;">
+                <h6>Dr Mark Smith</h6>
+                <p>Ortodontist</p>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-3  col-sm-6">
+            <div class="doctor-item">
+                <img src="~/img/doctors/4.jpg" alt="" style="width:100px; height:100px;">
+                <h6>Dr Tailor Smith</h6>
+                <p>Ortodontist</p>
+            </div>
+        </div>*@
+    </div>
+    </div>
+</section>
+<!-- Doctors section end -->

@@ -1,0 +1,82 @@
+﻿@using DentalStudio.Common
+@using Microsoft.AspNetCore.Identity
+
+
+@if (this.User.Identity.IsAuthenticated && this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+{
+    <header>
+        <nav class="navbar">
+            <a asp-area="Administration" asp-controller="Dashboard" asp-action="Index" class="navbar-brand"><span>D</span>ental<span>S</span>tudio <i class="fas fa-user-edit"></i></a>
+            <ul>                
+                <li><a asp-area="Administration" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
+                <li><a asp-area="Administration" asp-controller="Doctors" asp-action="All">Doctors</a></li>
+                <li><a asp-area="Administration" asp-controller="Patients" asp-action="All">Patients</a></li>
+                <li><a asp-area="Administration" asp-controller="Appointments" asp-action="All">Appointments</a></li>
+                <li><a asp-area="Administration" asp-controller="Procedures" asp-action="All">Procedures</a></li>
+                <li><a asp-area="" asp-controller="Posts" asp-action="All">Posts</a></li>  
+                <li><a asp-area="Administration" asp-controller="Dashboard" asp-action="Profile">Hello, @(this.User.Identity.Name)!</a></li>
+            </ul>
+            <button class="navbar-toggler ">
+                <span></span>
+            </button>
+        </nav>
+    </header>
+}
+else if (this.User.Identity.IsAuthenticated && this.User.IsInRole(GlobalConstants.DoctorRoleName))
+{
+    <header>
+        <nav class="navbar">         
+            <a asp-area="Medicine" asp-controller="Dashboard" asp-action="Index" class="navbar-brand"><span>D</span>ental<span>S</span>tudio <i class="fas fa-tooth"></i></a>
+            <ul>
+                <li><a asp-area="Medicine" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
+                <li><a asp-area="Medicine" asp-controller="Patients" asp-action="All">Patients</a></li>
+                <li><a asp-area="Medicine" asp-controller="Appointments" asp-action="All">Appointments</a></li>
+                <li><a asp-area="" asp-controller="Posts" asp-action="All">Blog</a></li>
+                @await Component.InvokeAsync("ProfilePhoto")
+            </ul>
+            <button class="navbar-toggler ">
+                <span></span>
+            </button>
+        </nav>
+    </header>
+}
+else if (this.User.Identity.IsAuthenticated && this.User.IsInRole(GlobalConstants.PatientRoleName))
+{
+    <header>
+        <nav class="navbar">
+            <a asp-area="" asp-controller="Patients" asp-action="Index" class="navbar-brand"><span>D</span>ental<span>S</span>tudio <i class="far fa-user"></i></a>
+            <ul>               
+                <li><a asp-area="" asp-controller="Patients" asp-action="Index">Dashboard</a></li>
+                <li><a asp-area="" asp-controller="Patients" asp-action="Doctors">Doctors</a></li>
+                <li><a asp-area="" asp-controller="Patients" asp-action="Appointments">Appointments</a></li>
+                <li><a asp-area="" asp-controller="Contacts" asp-action="Index">Contacts</a></li>
+                <li><a asp-area="" asp-controller="Services" asp-action="All">Services</a></li>
+                <li><a asp-area="" asp-controller="Posts" asp-action="All">Blog</a></li>
+                @await Component.InvokeAsync("ProfilePhoto")              
+            </ul>
+            <button class="navbar-toggler ">
+                <span></span>
+            </button>
+        </nav>
+    </header>
+}
+else
+{
+    <header>
+        <nav class="navbar">
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"><span>D</span>ental<span>S</span>tudio</a>
+            <ul>
+                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                <li><a asp-area="" asp-controller="Services" asp-action="All">Services</a></li>
+                <li><a asp-area="" asp-controller="Posts" asp-action="All">Blog</a></li>
+                <li><a asp-area="" asp-controller="Contacts" asp-action="Index">Contacts</a></li>
+                <li><a asp-area="Identity" asp-controller="Account" asp-action="Login">Login</a></li>               
+            </ul>
+            <button class="navbar-toggler ">
+                <span></span>
+            </button>
+        </nav>
+    </header>
+}
+

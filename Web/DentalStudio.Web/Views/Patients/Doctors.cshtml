@@ -1,0 +1,68 @@
+﻿@using DentalStudio.Web.ViewModels.Medicine.Doctors
+@model List<DoctorViewModel>
+@{
+    ViewData["Title"] = "All";
+}
+
+
+<!-- DATA TABLE-->
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th><h2>Doctors</h2></th>
+            </tr>
+        </thead>       
+    </table>
+    <div class="row" style="margin-top:5%">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="dataTable" class="table table-data2 table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Speciality</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Gender</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var doctor in Model)
+                        {
+                            <tr class="tr-shadow">
+                                <td>D-r @doctor.FullName</td>
+                                <td>@doctor.Specialty</td>
+                                <td>@doctor.Email</td>
+                                <td>@doctor.PhoneNumber</td>
+                                <td>@doctor.Gender</td>
+                                <td>
+                                    <a asp-action="DoctorDetails" asp-controller="Patients"
+                                       asp-route-id="@doctor.Id">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a class="btn btn-outline-info btn-sm float-right"
+                                       asp-action="AddAppointmentByDoctor" asp-controller="Patients"
+                                       asp-route-id="@doctor.Id">Запази час</a>
+                                </td>
+                            </tr>
+                            }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END DATA TABLE-->
+
+@section Scripts
+{    
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+        });
+    </script>  
+}
+
+
+
+

@@ -1,0 +1,52 @@
+﻿@using DentalStudio.Web.ViewModels.Administration.Doctors
+@using DentalStudio.Data.Models.Enumerations
+@model DoctorDetailsViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+@if (this.TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-success">
+        @this.TempData["InfoMessage"]
+    </div>
+}
+<div class="containerForm" style="margin-top: 2%">
+    <div class="row">      
+        <div class="col-md-6">
+            <div style="padding-bottom:5%">
+                <img src="@Model.Photo" alt="" style="width:400px; height:300px;">
+            </div>
+            <div class="card-header" style="margin-top: 2%">
+                D-r: @Model.FullName
+            </div>
+            <div class="card-header" style="margin-top: 2%">
+                Speciality: @Model.Specialty
+            </div>
+            <div class="card-header" style="margin-top: 2%">
+                Email: @Model.Email
+            </div>
+            <div class="card-header" style="margin-top: 2%">
+                Phone Number: @Model.PhoneNumber
+            </div>
+            <div class="card-header" style="margin-top: 2%">
+                Address: @Model.Address
+            </div>
+            <div class="card-header" style="margin-top: 2%">
+                Dateof Birth: @Model.DateOfBirth
+            </div>
+            <div class="card-header" style="margin-top: 2%">
+                Gender: @Model.Gender
+            </div>
+            <div class="card-header" style="margin-top: 2%">
+                <a class="btn btn-info mb-3" style="width:auto"
+                   asp-action="All" asp-controller="Doctors"> Back</a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card-body">
+                @Html.Raw(Model.SanitizedGrade)
+            </div>
+        </div>
+    </div>
+</div>

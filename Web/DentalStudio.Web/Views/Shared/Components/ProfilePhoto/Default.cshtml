@@ -1,0 +1,19 @@
+﻿@using DentalStudio.Web.ViewComponents.Models
+@using DentalStudio.Common
+@model ProfilePhotoModel
+
+
+@if (this.User.IsInRole(GlobalConstants.DoctorRoleName))
+{
+    <li>
+        <a asp-area="Medicine" asp-controller="Doctors" asp-action="Profile"> <img src="@Model.ProfilePhoto" class="fa-align-center" alt="avatar image" height="30" /> Hello, D-r. @Model.FullName! </a>
+    </li>  
+}
+else
+{
+    <li>
+        <a asp-area="" asp-controller="Patients" asp-action="Profile"> <img src="@Model.ProfilePhoto" class="fa-align-center" alt="avatar image" height="30" /> Hello, @Model.FullName! </a>
+    </li>
+}
+
+

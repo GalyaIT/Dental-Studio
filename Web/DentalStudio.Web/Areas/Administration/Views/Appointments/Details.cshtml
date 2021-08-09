@@ -1,0 +1,41 @@
+﻿@using DentalStudio.Web.ViewModels.Administration.Appointments
+@using DentalStudio.Data.Models.Enumerations
+@model AppointmentDetailsViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="containerForm" style="margin-top: 2%">
+    <div class="row">
+        <div class="col-sm-2"> </div>      
+        <div class="col-md-6">
+            <div class="card-header">
+                Date: @Model.Date
+            </div>
+            <div class="card-header">
+                Time: @Model.Time
+            </div>
+            <div class="card-header">
+                Doctor: @Model.DoctorName
+            </div>
+            <div class="card-header">
+                Patient: @Model.PatientName
+            </div>
+            <div class="card-header">
+                Procedure: @Model.ProcedureName
+            </div>
+            <div class="card-header">
+                Status: @Model.Status
+            </div>
+
+            <div class="card-header">
+                <a class="btn btn-info mb-3" style="width:auto"
+                   asp-action="All" asp-controller="Appointments"> Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

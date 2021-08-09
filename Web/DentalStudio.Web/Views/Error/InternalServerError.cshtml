@@ -1,0 +1,29 @@
+﻿@using DentalStudio.Common;
+@model DentalStudio.Web.ViewModels.ErrorViewModel
+
+@{
+    ViewData["Title"] = "Oops, Error!";
+}
+
+<section id="titlebar" style="margin-top:3%">
+    <div class="container">
+        <div class="text-center"style="margin-bottom:5%">
+            <h2>Oops, Error!</h2>
+        </div>
+    </div>
+</section>
+<div class="container" style="margin-bottom:20%">
+    <div class="text-left">
+        <h3>Something went wrong!</h3>
+        <h3>Please try again later. If the error persists, contact the owner.</h3>
+        <div class="margin-bottom-45"></div>
+        <strong>Status code:</strong> <code>@this.Model.StatusCode</code>
+        @if (this.Model.ShowRequestId)
+        {
+            <br />
+            <strong>Request ID:</strong> <code>@this.Model.RequestId</code>
+        }
+      
+    </div>
+</div>
+

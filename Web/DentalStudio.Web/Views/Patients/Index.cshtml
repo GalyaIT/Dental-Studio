@@ -1,0 +1,35 @@
+﻿@model DentalStudio.Web.ViewModels.Patients.PatientIndexViewModel
+@{
+    this.ViewData["Title"] = "Patient dashboard";
+}
+
+@if (this.TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-success">
+        @this.TempData["InfoMessage"]
+    </div>
+}
+
+<partial name="_WelcomePartial" />
+@await Component.InvokeAsync("Statistic")
+<!-- STATISTIC-->
+<section class="statistic" style="margin-top:2%">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="statistic__item">
+                    <div class="number">@Model.Appointments.Count</div>
+                    <a asp-action="Appointments" asp-controller="Patients">Your appointments</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="statistic__item">
+                    <div class="number">@Model.Appointments.Count</div> @*//treatments*@
+                    <span>Your treatments</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

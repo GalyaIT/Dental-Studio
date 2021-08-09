@@ -1,0 +1,104 @@
+﻿@using DentalStudio.Web.ViewModels.Administration.Appointments
+@using DentalStudio.Data.Models.Enumerations
+@model AppointmentEditViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@if (this.TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @this.TempData["InfoMessage"]
+    </div>
+}
+
+<div class="container" style="margin-top: 1% ">
+    <h2 class="text-center text-info"> Edit appointment</h2>
+    <div class="row">
+        <div class="col-sm-3"> </div>
+        <div class="col-md-8">
+            <div class="tab-content">
+                <form asp-area="Administration" asp-controller="Appointments" asp-action="Edit" method="post">
+                    <div asp-validation-summary="ModelOnly"></div>
+
+                    <div class="col-md-6">
+                        <div class="form-group mx-auto w-45">
+                            <label asp-for="Date"></label>
+                            <input type="date" class="form-control" id="date" placeholder="Date..." asp-for="Date">
+                            <span asp-validation-for="Date" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mx-auto w-45">
+                            <label asp-for="Time"></label>
+                            <input id="time" type="time" name="time" min="09:00" max="15:00"
+                                   class="form-control" step="1200" asp-for="Time">
+                            <span asp-validation-for="Time" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="DoctorName">Doctor</label>
+                            <select class="form-control text-primary" id="doctorName" asp-for="DoctorName">
+                                <option selected disabled>@Model.DoctorName</option>
+                                @foreach (var doctor in Model.Doctors)
+                                {
+                                    <option value="@doctor.FullName">@doctor.FullName</option>
+                                }
+                            </select>
+                            <span asp-validation-for="DoctorName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="PatientName">Patient</label>
+                            <select class="form-control text-primary" id="patientName" asp-for="PatientName">
+                                <option selected disabled>@Model.PatientName</option>
+                                @foreach (var patient in Model.Patients)
+                                {
+                                    <option value="@patient.FullName">@patient.FullName</option>
+                                }
+                            </select>
+                            <span asp-validation-for="PatientName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ProcedureName">Procedure</label>
+                            <select class="form-control text-primary" id="procedureName" asp-for="ProcedureName">
+                                <option selected disabled>@Model.ProcedureName</option>
+                                @foreach (var procedure in Model.Procedures)
+                                {
+                                    <option value="@procedure.Name">@procedure.Name</option>
+                                }
+                            </select>
+                            <span asp-validation-for="ProcedureName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Status"></label>
+                            <select asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()" class="form-control">
+                                <option selected="selected" value="">Please select</option>
+                            </select>
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <a asp-action="All" asp-controller="Appointments" class="btn btn-default active">Back</a>
+                        <button type="submit" class="btn btn-primary float-lg-right">Edit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+
+
+

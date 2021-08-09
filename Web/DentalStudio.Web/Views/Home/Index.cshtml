@@ -1,0 +1,233 @@
+﻿@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@model DentalStudio.Web.ViewModels.Contacts.ContactFormViewModel
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <section>
+        <div class="container">
+            <div class="hero">
+                <div class="item active float-left">
+                    <img src="~/img/slide-1.jpg" alt="">
+                    <div class="hero-caption">
+                        <div id="homeTitle" class="text-left">
+                            <h1>Welcome to Dental Studio!</h1>
+                            <br />
+                        </div>
+                        <div class="float-left" style="margin-left:-10%">
+                            <a class="btn btn-default btn-sm float-left" asp-area="Identity" asp-controller="Account" asp-action="Login">
+                                Login
+                            </a>
+                            <a class="btn btn-default btn-sm float-left" asp-area="Identity" asp-controller="Account" asp-action="Register">
+                                Register
+                            </a>
+                            <a class="btn btn-default btn-sm float-left" asp-controller="Contacts" asp-action="Index">
+                                Contacts
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Hero section -->
+@*<section>
+    <div class="container">
+        <div class="main-picture">
+            <img src="~/img/slide-1.jpg" alt="">
+        </div>
+    </div>
+
+</section>*@
+<!-- Hero section end -->
+<!-- About section -->
+<section>
+    <div class="container">
+        <div class="about">
+            <div class="section-about text-center" style="margin-top:3%">
+                <h2>We Care About Your teeth</h2>
+                <hr />
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <img src="img/about.jpg" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper venenatis turpis eget suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec eu nulla sollicitudin, vestibulum sapien nec, dictum dolor. Morbi non penatibus et magnis  volutpat magna. <a asp-action="About" asp-controller="Home"><i class="fa fa-arrow-circle-right"></i></a> </p>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <img src="~/img/dentist 2.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About section end -->
+<!-- Services section -->
+<section>
+    <div class="container">
+        <div class="section-title text-center"style="margin-top:3%">
+            <h2>Our Services</h2>
+            <hr />
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 service">
+                <div class="service-content">
+                    <h4>Crowns Bridges</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem per venenatis turpis.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 service">
+                <div class="service-content">
+                    <h4>Implants</h4>
+                    <p>Phasellus vehicula tempus orci vel consequat. Nullam lorem sem, viverra a rutrum sed.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 service">
+                <div class="service-content">
+                    <h4>Teeth Whitening</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem per venenatis turpis,</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 service">
+                <div class="service-content">
+                    <h4>Root Canals</h4>
+                    <p>Phasellus vehicula tempus orci vel consequat. Nullam lorem sem, viverra a rutrum sed.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 service">               
+                <div class="service-content">
+                    <h4>Wisdom Teeths</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem per venenatis turpis,</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 service">              
+                <div class="service-content">
+                    <h4>Braces</h4>
+                    <p>Nullam lorem sem, viverra a rutru m sed, gravida mattis magna. Suspendisse vitae commodo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<hr />
+<!-- Services section end -->
+<!-- Gallery section -->
+<section>
+    <div class="container">
+        <div class="gallery">
+            <ul>
+                <li>
+                    <img src="~/img/gallery/1.jpg" alt="">
+                </li>
+                <li>
+                    <img src="~/img/gallery/2.jpg" alt="">
+                </li>
+                <li>
+                    <img src="~/img/gallery/3.jpg" alt="">
+                </li>
+                <li>
+                    <img src="~/img/gallery/4.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</section>
+
+<!-- Gallery section end -->
+<!--Contact Form-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="well well-sm">
+                <form class="form-horizontal" asp-controller="Contacts" asp-action="Index" method="post">
+                    <fieldset>
+                        <legend class="text-center header">Свържете се с нас</legend>
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <label asp-for="Name"></label>
+                                <input type="text" class="form-control" id="lastName"
+                                       placeholder="Yours Names..." asp-for="Name">
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <label asp-for="Email"></label>
+                                <input type="text" class="form-control" id="email"
+                                       placeholder="Email..." asp-for="Email">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <label asp-for="Title"></label>
+                                <input type="text" class="form-control" id="title"
+                                       placeholder="Title..." asp-for="Title">
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <label asp-for="Content"></label>
+                                <textarea type="text" class="form-control" id="content" placeholder="Enter your massage for us here. We will get back to you." asp-for="Content" rows="6"></textarea>
+                                <span asp-validation-for="Content" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <p style="padding:10px;">
+                            Натискайки бутона "Изпратете ни съобщение", вие потвърждавате, че сте запознати и съгласни с нашата
+                            <a asp-area="" asp-controller="Home" asp-action="Privacy">политика за опазване на личните данни</a>
+                        </p>
+
+
+                        <input type="hidden" id="RecaptchaValue" name="RecaptchaValue" />
+                        <div class="form-group">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary">Изпратете ни съобщение</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <div class="panel panel-default">
+                    <div class="text-center header">Нашето студио</div>
+                    <div class="panel-body text-center">
+                        <h4>Адрес:</h4>
+                        <div class="address">
+                            4000 Plovdiv<br />
+                            Hristo Botev 3<br />
+                            #(352) 1234 1234<br />
+                            service@dentalstudio.com<br />
+                        </div>
+                        <hr />
+                        <div class="gmap_canvas"><iframe width="450" height="430" id="gmap_canvas" src="https://maps.google.com/maps?q=Bulgaria%20Plovdiv%20bul%20Hristo%20Botev%203&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="https://www.google.com/recaptcha/api.js?render=@this.Configuration["GoogleReCaptcha:Key"]"></script>
+    <script>
+        grecaptcha.ready(function () {
+            grecaptcha.execute('@this.Configuration["GoogleReCaptcha:Key"]', { action: 'contact_form' }).then(function (token) {
+                document.getElementById("RecaptchaValue").value = token;
+            });
+        });
+
+
+    </script>
+
+}

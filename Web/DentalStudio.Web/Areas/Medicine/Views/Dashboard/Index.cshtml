@@ -1,0 +1,235 @@
+﻿
+@model DentalStudio.Web.ViewModels.Medicine.Dashboard.DashboardViewModel
+@{
+    this.ViewData["Title"] = "Doctor dashboard";
+}
+
+
+<partial name="_WelcomePartial" />
+<!--STATISTIC-->
+@await Component.InvokeAsync("Statistic")
+<!--END STATISTIC-->
+<!-- STATISTIC-->
+<section class="statistic">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 ">
+                <div class="statistic__item">
+                    <div class="number">@Model.Patients.Count</div>
+                    <a asp-action="All" asp-controller="Patients">My Patients</a>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <div class="statistic__item">
+                    <div class="number">@Model.AllAppointments.Count</div>
+                    <a asp-action="All" asp-controller="Appointments"> My Appointments</a>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <div class="statistic__item">
+                    <div class="number">@Model.ConfirmedAppointments.Count</div>
+                    <a href="#ConfirmedAppointments"> My Confirmed Appointments</a>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <div class="statistic__item">
+                    <div class="number">@Model.WaitingAppointments.Count</div>
+                    <a href="#WaitingAppointments"> My Waiting Appointments</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<hr />
+<!-- END STATISTIC-->
+<!-- DATA TABLE-->
+<div class="container" clas="margin-top:5%">
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="btn btn-info mb-3" style="width:auto"
+                               asp-action="All" asp-controller="Patients">Patients</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="dataTable" class="table table-data2 table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Gender</th>
+                            <th>Date of Birth</th>
+                            <th>Age</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var patient in Model.Patients)
+                        {
+                            <tr class="tr-shadow">
+                                <td>@patient.FullName</td>
+                                <td>@patient.Email</td>
+                                <td>@patient.PhoneNumber</td>
+                                <td>@patient.Address</td>
+                                <td>@patient.Gender</td>
+                                <td>@patient.DateOfBirth</td>
+                                <td>@patient.Age</td>
+                                <td>
+                                    <a asp-action="Details" asp-controller="Patients"
+                                       asp-route-id="@patient.Id">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END DATA TABLE-->
+<hr />
+<!-- DATA TABLE-->
+<div class="container" id="WaitingAppointments" clas="margin-top:5%">
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="btn btn-info mb-3" style="width:auto"
+                               href="#"> Waiting Appointments</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="dataTable1" class="table table-data2 table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Patient</th>
+                            <th>Procedure</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var appointment in Model.WaitingAppointments)
+                        {
+                        <tr class="tr-shadow">
+                            <td>@appointment.Date</td>
+                            <td>@appointment.Time</td>
+                            <td>
+                                <a asp-action="Details" asp-controller="Patients"
+                                   asp-route-id="@appointment.PatientId">@appointment.PatientName</a>
+                            </td>
+                            <td>@appointment.ProcedureName</td>
+                            <td>@appointment.Status</td>
+                            <td>
+                                <form>
+                                    <a asp-action="Details" asp-controller="Appointments"
+                                       asp-route-id="@appointment.Id">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a class="btn btn-outline-success btn-sm float-lg-right"
+                                       asp-action="Edit" asp-controller="Appointments"
+                                       asp-route-id="@appointment.Id">Confirm</a>
+                                </form>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END DATA TABLE-->
+<hr />
+<!-- DATA TABLE-->
+<div class="container" id="ConfirmedAppointments" clas="margin-top:5%">
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="btn btn-info mb-3" style="width:auto"
+                               href="#"> Confirmed Appointments</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="dataTable2" class="table table-data2 table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Patient</th>
+                            <th>Procedure</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var appointment in Model.ConfirmedAppointments)
+                        {
+                        <tr class="tr-shadow">
+                            <td>@appointment.Date</td>
+                            <td>@appointment.Time</td>
+                            <td>
+                                <a asp-action="Details" asp-controller="Patients"
+                                   asp-route-id="@appointment.PatientId">@appointment.PatientName</a>
+                            </td>
+                            <td>@appointment.ProcedureName</td>
+                            <td>@appointment.Status</td>
+                            <td>
+                                <a asp-action="Details" asp-controller="Appointments"
+                                   asp-route-id="@appointment.Id">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END DATA TABLE-->
+
+@section Scripts
+{ 
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+        });
+        $(document).ready(function () {
+            $('#dataTable1').DataTable();
+        });
+        $(document).ready(function () {
+            $('#dataTable2').DataTable();
+        });       
+    </script>
+}
+
+
+

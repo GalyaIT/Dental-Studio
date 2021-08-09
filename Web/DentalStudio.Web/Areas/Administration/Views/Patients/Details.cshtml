@@ -1,0 +1,61 @@
+﻿@using DentalStudio.Web.ViewModels.Administration.Patients
+@using DentalStudio.Data.Models.Enumerations
+@model PatientDetailsViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+@if (this.TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-success">
+        @this.TempData["InfoMessage"]
+    </div>
+}
+<div class="containerForm" style="margin-top: 5%">
+    <div class="row">
+        @*<div class="col-sm-2"> </div>*@
+        <div class="col-md-6">
+            <div>
+                <img src="@Model.Photo" alt="" style="width:400px; height:300px;">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card-header">
+                <h5>@Model.FullName</h5>
+            </div>
+            <div class="card-header">
+                Email: @Model.Email
+            </div>
+            <div class="card-header">
+                Phone Number: @Model.PhoneNumber
+            </div>
+            <div class="card-header">
+                Address: @Model.Address
+            </div>
+            <div class="card-header">
+                Dateof Birth: @Model.DateOfBirth
+            </div>
+            <div class="card-header">
+                Age: @Model.Age
+            </div>
+            <div class="card-header">
+                Gender: @Model.Gender
+            </div>
+            <div class="card-header">
+                Blood group: @Model.BloodGroup
+            </div>
+            <div class="card-header">
+                Is alergic: @Model.IsAlergic
+            </div>
+            <div class="card-header">
+                Is insured: @Model.IsInsured
+            </div>
+            <div class="card-header">
+                <a class="btn btn-info mb-3" style="width:auto"
+                   asp-action="All" asp-controller="Patients"> Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,103 @@
+﻿@using DentalStudio.Web.ViewModels.Administration.Doctors
+@model List<DoctorViewModel>
+@{
+    ViewData["Title"] = "All";
+}
+
+@if (this.TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-success">
+        @this.TempData["InfoMessage"]
+    </div>
+}
+
+<!-- DATA TABLE-->
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th><h4>Doctors</h4></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="btn btn-info mb-3" style="width:auto" asp-action="Create"
+                               asp-controller="Doctors">Add new doctor</a>
+                            <a class="btn btn-info mb-3" style="width:auto"
+                               asp-action="Index" asp-controller="Dashboard"> Back</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="dataTable" class="table table-data2 table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Speciality</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Gender</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var doctor in Model)
+                        {
+                            <tr class="tr-shadow">
+                                <td>D-r @doctor.FullName</td>
+                                <td>@doctor.Specialty</td>
+                                <td>@doctor.Email</td>
+                                <td>@doctor.PhoneNumber</td>
+                                <td>@doctor.Address</td>
+                                <td>@doctor.Gender</td>
+                                <td>
+                                    @*<form asp-action="Delete" asp-route-id="@doctor.Id" method="post">*@
+                                        <a class="btn btn-outline-info btn-sm"
+                                           asp-action="Details" asp-controller="Doctors"
+                                           asp-route-id="@doctor.Id">More</a>
+                                        <a class="btn btn-outline-success btn-sm"
+                                           asp-action="Edit" asp-controller="Doctors"
+                                           asp-route-id="@doctor.Id">Edit</a>
+                                        @*<span id="confirmDeleteSpan_@doctor.Id" style="display:none">
+                                            <span>Are you sure you want to delete?</span>
+                                            <button type="submit" class="btn btn-danger btn-sm">Yes</button>
+                                            <a href="#" class=" btn btn-info btn-sm"
+                                               onclick="confirmDelete('@doctor.Id', false)">No</a>
+                                        </span>
+                                        <span id="deleteSpan_@doctor.Id">
+                                            <a href="#" class="btn btn-outline-danger btn-sm"
+                                               onclick="confirmDelete('@doctor.Id', true)">Delete</a>
+                                        </span>
+                                    </form>*@
+                                </td>
+                            </tr>
+                            }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END DATA TABLE-->
+
+
+@section Scripts
+{    
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+        });
+    </script>   
+}
+
+
+

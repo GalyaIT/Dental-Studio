@@ -1,0 +1,115 @@
+﻿@using DentalStudio.Web.ViewModels.Administration.Patients
+@using DentalStudio.Data.Models.Enumerations
+@model PatientCreateInputModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+    <div class="container" style="margin-top: 1% ">
+        <h2 class="text-center text-info"> Добави пациент</h2>
+        <div class="row">
+            <div class="col-sm-2"> </div>
+            <div class="col-md-8">
+                <div class="tab-content">
+                    <form asp-area="Administration" asp-controller="Patients" asp-action="AddPatient" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="FirstName"></label>
+                                <input type="text" class="form-control" id="firstName" placeholder="First Name..." asp-for="FirstName">
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="LastName"></label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Last Name..." asp-for="LastName">
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Email"></label>
+                                <input type="email" class="form-control" id="email" placeholder="Email..." asp-for="Email">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="PhoneNumber"></label>
+                                <input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number..." asp-for="PhoneNumber">
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group mx-auto w-45">
+                                <label asp-for="Photo"></label>
+
+                                <input type="file" class="form-control" id="patient.photo" placeholder="Photo..." asp-for="Photo">
+                                <span asp-validation-for="Photo" class="text-danger"></span>
+                                <span id="file-selected"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mx-auto w-45">
+                                <label asp-for="DateOfBirth"></label>
+                                <input type="date" class="form-control" id="patient.dateOfBirth" placeholder="Date of birth..." asp-for="DateOfBirth">
+                                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Address"></label>
+                                <input type="text" class="form-control" id="patient.address" placeholder="Address" asp-for="Address">
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Gender"></label>
+                                <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()" class="form-control">
+                                    <option selected="selected" value="">Please select</option>
+                                </select>
+                                <span asp-validation-for="Gender" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="BloodGroup"></label>
+                                <select asp-for="BloodGroup" asp-items="Html.GetEnumSelectList<BloodGroup>()" class="form-control">
+                                    <option selected="selected" value="">Please select</option>
+                                </select>
+                                <span asp-validation-for="BloodGroup" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="IsAlergic"></label>
+                                <input name="IsAlergic" type="checkbox" value="false" onchange="this.value=this.checked">
+                                <span asp-validation-for="IsAlergic" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="IsInsured"></label>
+                                <input name="IsInsured" type="checkbox" value="false" onchange="this.value=this.checked">
+                                <span asp-validation-for="IsInsured" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <a asp-action="All" asp-controller="Patients" class="btn btn-default active">Откажи</a>
+                            <button type="submit" class="btn btn-primary float-lg-right">Добави</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

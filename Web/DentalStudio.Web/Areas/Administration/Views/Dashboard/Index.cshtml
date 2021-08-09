@@ -1,0 +1,260 @@
+﻿@model DentalStudio.Web.ViewModels.Administration.Dashboard.DashboardViewModel
+@{
+    this.ViewData["Title"] = "Admin dashboard";
+}
+
+
+<partial name="_WelcomePartial" />
+<!-- STATISTIC-->
+@await Component.InvokeAsync("Statistic")
+<!-- END STATISTIC-->
+
+<section class="statistic">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="statistic__item">
+                    <div class="headline">Doctors</div>
+                    <a asp-action="All" asp-controller="Doctors">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="statistic__item">
+                    <div class="headline">Patients</div>
+                    <a asp-action="All" asp-controller="Patients">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="statistic__item">
+                    <div class="headline">Appointments</div>
+                    <a asp-action="All" asp-controller="Appointments">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="statistic__item">
+                    <div class="headline">Procedures</div>
+                    <a asp-action="All" asp-controller="Procedures">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END STATISTIC-->
+<hr />
+<!-- DATA TABLE-->
+<div class="container">
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="btn btn-info mb-3" style="width:auto"
+                               asp-action="All" asp-controller="Doctors"> Doctors</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="dataTable" class="table table-data2 table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Speciality</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Gender</th>
+                            <th>Date of Birth</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var doctor in Model.Doctors)
+                        {
+                            <tr class="tr-shadow">
+                                <td>D-r @doctor.FullName</td>
+                                <td>@doctor.Specialty</td>
+                                <td>@doctor.Email</td>
+                                <td>@doctor.PhoneNumber</td>
+                                <td>@doctor.Address</td>
+                                <td>@doctor.Gender</td>
+                                <td>@doctor.DateOfBirth</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END DATA TABLE-->
+<hr />
+<!-- DATA TABLE-->
+<div class="container">
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="btn btn-info mb-3" style="width:auto"
+                               asp-action="All" asp-controller="Patients"> Patients</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="dataTable1" class="table table-data2 table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Gender</th>
+                            <th>Date of Birth</th>
+                            <th>Age</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var patient in Model.Patients)
+                        {
+                            <tr class="tr-shadow">
+                                <td>@patient.FullName</td>
+                                <td>@patient.Email</td>
+                                <td>@patient.PhoneNumber</td>
+                                <td>@patient.Address</td>
+                                <td>@patient.Gender</td>
+                                <td>@patient.DateOfBirth</td>
+                                <td>@patient.Age</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<!-- END DATA TABLE-->
+<div class="container">
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="btn btn-info mb-3" style="width:auto"
+                               asp-action="All" asp-controller="Appointments"> Appointments</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="dataTable2" class="table table-data2 table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Doctor</th>
+                            <th>Patient</th>
+                            <th>Procedure</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var appointment in Model.Appointments)
+                        {
+                            <tr class="tr-shadow">
+                                <td>@appointment.Date</td>
+                                <td>@appointment.Time</td>
+                                <td>D-r. @appointment.DoctorName</td>
+                                <td>@appointment.PatientName</td>
+                                <td>@appointment.ProcedureName</td>
+                                <td>@appointment.Status</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END DATA TABLE-->
+<!-- DATA TABLE-->
+<div class="container">
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="btn btn-info mb-3" style="width:auto"
+                               asp-action="All" asp-controller="Procedures">Procedures</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="dataTable3" class="table table-data2 table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Code</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var procedure in Model.Procedures)
+                        {
+                            <tr class="tr-shadow">
+                                <td>@procedure.Name</td>
+                                <td>@procedure.Code</td>
+                                <td>@procedure.Price</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END DATA TABLE-->
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+        });
+        $(document).ready(function () {
+            $('#dataTable1').DataTable();
+        });
+        $(document).ready(function () {
+            $('#dataTable2').DataTable();
+        });
+        $(document).ready(function () {
+            $('#dataTable3').DataTable();
+        });
+    </script>
+}
+
+
+
+
